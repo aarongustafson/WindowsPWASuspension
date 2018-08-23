@@ -1,7 +1,7 @@
 if ('Windows' in window)
 {
-	Windows.UI.WebUI.addEventListener('suspending', pause);
-	Windows.UI.WebUI.addEventListener('suspending', resume);
+	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', pause);
+	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', resume);
 }
 
 var $output = document.getElementsByTagName('output')[0],
