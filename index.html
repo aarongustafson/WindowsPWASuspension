@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <!--  Meta  -->
+  <meta charset="UTF-8" />
+  <title>Windows Share Target Example</title>
+  <link rel="manifest" href="manifest.json">
+  <!--  Styles  -->
+  <link rel="stylesheet" href="/c/default.css">
+</head>
+<body>
+  <header>
+    <h1>Testing Suspension in Windows PWA</h1>
+  </header>
+  
+  <main>
+    <p>This page will run an expensive, battery draining operation using <code>setTimeout</code> (which wakes the CPU) and <code>fetch</code> (which will wake up the radio) in an attempt to burndown the battery of a mobile device. Most browsers should suspend this tab in the background, but we want to make sure the WWAHost on Windows Phones is correctly doing that as well. An additional event listener is in place to track suspensions triggered from WinRT.</p>
+
+    <output></output>
+  </main>
+
+  <footer>
+    <p>Fixed footer</p>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="j/main.js"></script>
+  <script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>
