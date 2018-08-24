@@ -25,7 +25,7 @@ setTimeout(function(){
 	add(current);
 	current = next;
 	next = current + next;
-	uri = 'LICENSE?c=' + current + '&n=' + next;
+	uri = '/manifest.json?c=' + current + '&n=' + next;
 	fetch(new Request(uri)).then(function(){
 		add('fetched '+uri);
 	});
