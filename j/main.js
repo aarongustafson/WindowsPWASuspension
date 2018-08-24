@@ -21,13 +21,14 @@ function resume(){
 	add('pause');
 }
 
-setTimeout(function(){
+setInterval(function(){
 	add(current);
 	current = next;
 	next = current + next;
 	uri = '/manifest.json?c=' + current + '&n=' + next;
-	fetch(new Request(uri)).then(function(){
-		add('fetched '+uri);
-	});
+	fetch(new Request(uri))
+		.then(function(){
+			add('fetched '+uri);
+		});
 },
 500);
