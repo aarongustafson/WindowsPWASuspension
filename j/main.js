@@ -20,7 +20,7 @@ var $output = document.getElementsByTagName('output')[0],
 		current = 0,
 		next = 1,
 		uri,
-		interval;
+		interval = null;
 
 function add( text ){
 	$output.innerHTML += text + '\r\n';
@@ -55,6 +55,7 @@ function resume(){
 }
 
 function start() {
+	if ( interval ) { return; }
 	$button.innerText = 'Stop';
 	interval = setInterval(function(){
 		add(current);
@@ -70,8 +71,10 @@ function start() {
 }
 
 function stop() {
+	if ( ! interval ) { return; }
 	$button.innerText = 'Start';
 	clearInterval( interval );
+	interval = null;
 }
 
 $button.addEventListener('click', buttonClick, false);
