@@ -1,7 +1,14 @@
 if ('Windows' in window)
 {
-	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', pause);
-	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', resume);
+	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', pause, false);
+	Windows.UI.WebUI.WebUIApplication.addEventListener('suspending', resume, false);
+}
+
+document.addEventListener('visibilitychange', visibility, false);
+
+if ('onfreeze' in document) {
+	document.addEventListener('freeze', freeze, false);
+	document.addEventListener('resume', resume, false);
 }
 
 var $output = document.getElementsByTagName('output')[0],
@@ -13,12 +20,27 @@ function add( text ){
 	$output.innerHTML += text + '\r\n';
 }
 
+function visibility(){
+	if ( document.visibilityState == 'visible' )
+	{
+		add('visibility changed to visible');
+	}
+	else if ( document.visibilityState == 'hidden' )
+	{
+		add('visibility changed to hidden');
+	}
+}
+
 function pause(){
 	add('pause');
 }
 
+function freeze(){
+	add('freeze');
+}
+
 function resume(){
-	add('pause');
+	add('resume');
 }
 
 setInterval(function(){
@@ -31,4 +53,4 @@ setInterval(function(){
 			add('fetched '+uri);
 		});
 },
-500);
+2000);
