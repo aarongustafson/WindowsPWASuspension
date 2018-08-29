@@ -71,7 +71,6 @@ function stop() {
 	clearInterval( interval );
 }
 
-
 $button.innerText = 'Stop';
 $button.addEventListener('click', buttonClick, false);
 function buttonClick(){
@@ -87,3 +86,5 @@ function buttonClick(){
 	}
 }
 $output.parentNode.insertBefore($button, $output);
+
+start();
