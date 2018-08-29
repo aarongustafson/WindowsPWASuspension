@@ -86,4 +86,4 @@ function buttonClick(){
 		$button.innerText = 'Stop';
 	}
 }
-document.body.insertBefore($button, $output);
+$output.parentNode.insertBefore($button, $output);
