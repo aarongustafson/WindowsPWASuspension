@@ -16,6 +16,7 @@ if ('onfreeze' in document) {
 
 var $output = document.getElementsByTagName('output')[0],
 		$button = document.createElement('button'),
+		$p = document.createElement('p'),
 		current = 0,
 		next = 1,
 		uri,
@@ -54,6 +55,7 @@ function resume(){
 }
 
 function start() {
+	$button.innerText = 'Stop';
 	interval = setInterval(function(){
 		add(current);
 		current = next;
@@ -68,23 +70,22 @@ function start() {
 }
 
 function stop() {
+	$button.innerText = 'Start';
 	clearInterval( interval );
 }
 
-$button.innerText = 'Stop';
 $button.addEventListener('click', buttonClick, false);
 function buttonClick(){
 	if ( $button.innerText=='Stop' )
 	{
-		stop();
-		$button.innerText = 'Start';
+		stop();		
 	}
 	else
 	{
 		start();
-		$button.innerText = 'Stop';
 	}
 }
-$output.parentNode.insertBefore($button, $output);
+$p.appendChild($button);
+$output.parentNode.insertBefore($p, $output);
 
 start();
