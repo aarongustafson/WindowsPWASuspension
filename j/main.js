@@ -78,10 +78,12 @@ $button.addEventListener('click', buttonClick, false);
 function buttonClick(){
 	if ( $button.innerText=='Stop' )
 	{
+		add('Manually stopped');
 		stop();		
 	}
 	else
 	{
+		add('Manually started');
 		start();
 	}
 }
